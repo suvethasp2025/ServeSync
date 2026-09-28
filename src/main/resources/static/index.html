@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NGO Volunteer Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-icon">❤</div>
+
+        <div>
+            <h2>CareConnect</h2>
+            <span>NGO Management</span>
+        </div>
+    </div>
+
+
+    <nav>
+
+        <a href="#dashboard" class="nav-item active"
+           onclick="showSection('dashboard', this)">
+            <span>⌂</span>
+            Dashboard
+        </a>
+
+        <a href="#events" class="nav-item"
+           onclick="showSection('events', this)">
+            <span>◈</span>
+            Events
+        </a>
+
+        <a href="#volunteers" class="nav-item"
+           onclick="showSection('volunteers', this)">
+            <span>♟</span>
+            Volunteers
+        </a>
+
+        <a href="#signups" class="nav-item"
+           onclick="showSection('signups', this)">
+            <span>✓</span>
+            Signups
+        </a>
+
+        <a href="#attendance" class="nav-item"
+           onclick="showSection('attendance', this)">
+            <span>▣</span>
+            Attendance
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="help-box">
+
+            <div class="help-icon">?</div>
+
+            <div>
+                <strong>Need Help?</strong>
+                <p>Manage your NGO activities easily.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+
+            <button class="mobile-menu"
+                    onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <span class="page-title">
+                NGO Volunteer Management
+            </span>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="notification">
+                🔔
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    S
+                </div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <span>Administrator</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section id="dashboard" class="content-section active-section">
+
+        <div class="welcome">
+
+            <div>
+
+                <p class="small-heading">
+                    OVERVIEW
+                </p>
+
+                <h1>
+                    Welcome back, Admin 👋
+                </h1>
+
+                <p>
+                    Manage volunteers, events and community
+                    activities from one place.
+                </p>
+
+            </div>
+
+            <button class="primary-btn"
+                    onclick="openEventModal()">
+
+                + Create Event
+
+            </button>
+
+        </div>
+
+
+        <!-- STAT CARDS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon event-icon">
+                    ◈
+                </div>
+
+                <div>
+
+                    <span>Total Events</span>
+
+                    <h2 id="totalEvents">
+                        0
+                    </h2>
+
+                    <small>
+                        Events organized
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon volunteer-icon">
+                    ♟
+                </div>
+
+                <div>
+
+                    <span>Total Volunteers</span>
+
+                    <h2 id="totalVolunteers">
+                        0
+                    </h2>
+
+                    <small>
+                        Registered volunteers
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon signup-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>Total Signups</span>
+
+                    <h2 id="totalSignups">
+                        0
+                    </h2>
+
+                    <small>
+                        Volunteer registrations
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon attendance-icon">
+                    ▣
+                </div>
+
+                <div>
+
+                    <span>Attendance</span>
+
+                    <h2 id="totalAttendance">
+                        0
+                    </h2>
+
+                    <small>
+                        Attendance records
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DASHBOARD LOWER AREA -->
+
+        <div class="dashboard-grid">
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Upcoming Events</h3>
+                        <p>Recently created events</p>
+                    </div>
+
+                    <button class="text-btn"
+                            onclick="showSection('events')">
+
+                        View All
+
+                    </button>
+
+                </div>
+
+                <div id="dashboardEvents"
+                     class="event-preview">
+
+                    <div class="empty-state">
+                        No events available
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Quick Actions</h3>
+                        <p>Manage your activities</p>
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <button onclick="openEventModal()">
+
+                        <span>◈</span>
+
+                        <div>
+                            <strong>Add Event</strong>
+                            <small>Create a new NGO event</small>
+                        </div>
+
+                    </button>
+
+
+                    <button onclick="openVolunteerModal()">
+
+                        <span>♟</span>
+
+                        <div>
+                            <strong>Add Volunteer</strong>
+                            <small>Register a volunteer</small>
+                        </div>
+
+                    </button>
+
+
+                    <button onclick="openSignupModal()">
+
+                        <span>✓</span>
+
+                        <div>
+                            <strong>New Signup</strong>
+                            <small>Register for an event</small>
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EVENTS ================= -->
+
+    <section id="events" class="content-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-heading">
+                    MANAGEMENT
+                </p>
+
+                <h1>Events</h1>
+
+                <p>
+                    Create and manage NGO events.
+                </p>
+
+            </div>
+
+            <button class="primary-btn"
+                    onclick="openEventModal()">
+
+                + Add Event
+
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="table-toolbar">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input type="text"
+                           id="eventSearch"
+                           placeholder="Search events..."
+                           onkeyup="filterEvents()">
+
+                </div>
+
+                <button class="refresh-btn"
+                        onclick="loadEvents()">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>EVENT</th>
+                        <th>LOCATION</th>
+                        <th>DATE</th>
+                        <th>CAPACITY</th>
+                        <th>ACTIONS</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="eventTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= VOLUNTEERS ================= -->
+
+    <section id="volunteers" class="content-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-heading">
+                    MANAGEMENT
+                </p>
+
+                <h1>Volunteers</h1>
+
+                <p>
+                    Manage registered NGO volunteers.
+                </p>
+
+            </div>
+
+            <button class="primary-btn"
+                    onclick="openVolunteerModal()">
+
+                + Add Volunteer
+
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="table-toolbar">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input type="text"
+                           id="volunteerSearch"
+                           placeholder="Search volunteers..."
+                           onkeyup="filterVolunteers()">
+
+                </div>
+
+                <button class="refresh-btn"
+                        onclick="loadVolunteers()">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>PHONE</th>
+                        <th>ACTIONS</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="volunteerTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SIGNUPS ================= -->
+
+    <section id="signups" class="content-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-heading">
+                    REGISTRATION
+                </p>
+
+                <h1>Signups</h1>
+
+                <p>
+                    Manage volunteer event registrations.
+                </p>
+
+            </div>
+
+            <button class="primary-btn"
+                    onclick="openSignupModal()">
+
+                + New Signup
+
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="table-toolbar">
+
+                <button class="refresh-btn"
+                        onclick="loadSignups()">
+
+                    ↻ Refresh Signups
+
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>EVENT ID</th>
+                        <th>VOLUNTEER ID</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="signupTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ATTENDANCE ================= -->
+
+    <section id="attendance" class="content-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-heading">
+                    TRACKING
+                </p>
+
+                <h1>Attendance</h1>
+
+                <p>
+                    Track volunteer attendance at events.
+                </p>
+
+            </div>
+
+            <button class="primary-btn"
+                    onclick="openAttendanceModal()">
+
+                + Mark Attendance
+
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="table-toolbar">
+
+                <button class="refresh-btn"
+                        onclick="loadAttendance()">
+
+                    ↻ Refresh Attendance
+
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>EVENT ID</th>
+                        <th>VOLUNTEER ID</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="attendanceTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= EVENT MODAL ================= -->
+
+<div class="modal-overlay"
+     id="eventModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="eventModalTitle">
+                    Add New Event
+                </h2>
+
+                <p>
+                    Enter the event details below.
+                </p>
+
+            </div>
+
+            <button class="close-btn"
+                    onclick="closeModal('eventModal')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form onsubmit="saveEvent(event)">
+
+            <input type="hidden"
+                   id="eventId">
+
+            <label>Event Name</label>
+
+            <input type="text"
+                   id="eventName"
+                   placeholder="Enter event name"
+                   required>
+
+
+            <label>Location</label>
+
+            <input type="text"
+                   id="eventLocation"
+                   placeholder="Enter location"
+                   required>
+
+
+            <label>Date</label>
+
+            <input type="date"
+                   id="eventDate"
+                   required>
+
+
+            <label>Volunteer Capacity</label>
+
+            <input type="number"
+                   id="eventCapacity"
+                   placeholder="Enter capacity"
+                   required>
+
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="cancel-btn"
+                        onclick="closeModal('eventModal')">
+
+                    Cancel
+
+                </button>
+
+                <button type="submit"
+                        class="primary-btn">
+
+                    Save Event
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= VOLUNTEER MODAL ================= -->
+
+<div class="modal-overlay"
+     id="volunteerModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="volunteerModalTitle">
+                    Add Volunteer
+                </h2>
+
+                <p>
+                    Register a new volunteer.
+                </p>
+
+            </div>
+
+            <button class="close-btn"
+                    onclick="closeModal('volunteerModal')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form onsubmit="saveVolunteer(event)">
+
+            <input type="hidden"
+                   id="volunteerId">
+
+            <label>Full Name</label>
+
+            <input type="text"
+                   id="volunteerName"
+                   placeholder="Enter volunteer name"
+                   required>
+
+
+            <label>Email</label>
+
+            <input type="email"
+                   id="volunteerEmail"
+                   placeholder="Enter email"
+                   required>
+
+
+            <label>Phone</label>
+
+            <input type="text"
+                   id="volunteerPhone"
+                   placeholder="Enter phone number"
+                   required>
+
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="cancel-btn"
+                        onclick="closeModal('volunteerModal')">
+
+                    Cancel
+
+                </button>
+
+                <button type="submit"
+                        class="primary-btn">
+
+                    Save Volunteer
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= SIGNUP MODAL ================= -->
+
+<div class="modal-overlay"
+     id="signupModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>New Signup</h2>
+
+                <p>
+                    Register a volunteer for an event.
+                </p>
+
+            </div>
+
+            <button class="close-btn"
+                    onclick="closeModal('signupModal')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form onsubmit="saveSignup(event)">
+
+            <label>Event ID</label>
+
+            <input type="number"
+                   id="signupEventId"
+                   placeholder="Enter event ID"
+                   required>
+
+
+            <label>Volunteer ID</label>
+
+            <input type="number"
+                   id="signupVolunteerId"
+                   placeholder="Enter volunteer ID"
+                   required>
+
+
+            <label>Status</label>
+
+            <select id="signupStatus">
+
+                <option value="Registered">
+                    Registered
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="cancel-btn"
+                        onclick="closeModal('signupModal')">
+
+                    Cancel
+
+                </button>
+
+                <button type="submit"
+                        class="primary-btn">
+
+                    Save Signup
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= ATTENDANCE MODAL ================= -->
+
+<div class="modal-overlay"
+     id="attendanceModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>Mark Attendance</h2>
+
+                <p>
+                    Record volunteer attendance.
+                </p>
+
+            </div>
+
+            <button class="close-btn"
+                    onclick="closeModal('attendanceModal')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form onsubmit="saveAttendance(event)">
+
+            <label>Event ID</label>
+
+            <input type="number"
+                   id="attendanceEventId"
+                   placeholder="Enter event ID"
+                   required>
+
+
+            <label>Volunteer ID</label>
+
+            <input type="number"
+                   id="attendanceVolunteerId"
+                   placeholder="Enter volunteer ID"
+                   required>
+
+
+            <label>Attendance Status</label>
+
+            <select id="attendanceStatus">
+
+                <option value="Present">
+                    Present
+                </option>
+
+                <option value="Absent">
+                    Absent
+                </option>
+
+            </select>
+
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="cancel-btn"
+                        onclick="closeModal('attendanceModal')">
+
+                    Cancel
+
+                </button>
+
+                <button type="submit"
+                        class="primary-btn">
+
+                    Save Attendance
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast"
+     class="toast">
+
+    <span id="toastMessage">
+        Success
+    </span>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
